@@ -108,6 +108,7 @@ function LoginPage(): JSX.Element {
                   className="login__input form__input"
                   type="email"
                   name="email"
+                  data-testid="emailElement"
                   placeholder="Email"
                   value={email}
                   required
@@ -124,6 +125,7 @@ function LoginPage(): JSX.Element {
                   className="login__input form__input"
                   type="password"
                   name="password"
+                  data-testid="passwordElement"
                   placeholder="Password"
                   value={password}
                   required
@@ -134,7 +136,7 @@ function LoginPage(): JSX.Element {
               </div>
               <button
                 className="login__submit form__submit button"
-                type="submit" disabled={!checkPassword || !checkEmail}
+                type="submit" disabled={email === '' || password === '' || !checkPassword || !checkEmail}
               >
                 {sendingStatus === RequestStatus.Loading
                   ? 'Logging in...'
